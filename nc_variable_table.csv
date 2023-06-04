@@ -1,0 +1,23 @@
+of_name,of_variable_type,nc_name,dimensions,units,long_name
+time,scalar,time,t,s,time
+Cx,scalar,Cx,n,m,cell_centres_x_coordinate
+Cy,scalar,Cy,n,m,cell_centres_y_coordinate
+Cz,scalar,Cz,n,m,cell_centres_z_coordinate
+Fx,scalar,Fx,n,m,face_centres_x_coordinate
+Fy,scalar,Fy,n,m,face_centres_y_coordinate
+Fz,scalar,Fz,n,m,face_centres_z_coordinate
+index,scalar,index,idx,1,index_of_the_variable
+p_rgh,scalar,prgh,t n,kg m-1 s-2,dynamic_pressure
+p_rbgh,scalar,prbgh,t n,kg m-1 s-2,dynamic_pressure_of_fluid
+alpha.a,scalar,alphaa,t n,1,volume_ratio_of_soil
+alpha.b,scalar,alphab,t n,1,volume_ratio_of_fluid
+alpha.water,scalar,alphawater,t n,1,volume_ratio_of_water
+k,scalar,k,t n,m2 s-2,turbulent_kinetic_energy
+k.b,scalar,kb,t n,m2 s-2,turbulent_kinetic_energy_of_fluid
+nut,scalar,nut,t n,m2 s-1,kinematic_turbulent_viscosity
+nut.b,scalar,nutb,t n,m2 s-1,kinematic_turbulent_viscosity_of_fluid
+yPlus,scalar,yPlus,t n,1,wall_unit
+U,vector,U,t n idx,m s-1,velocity
+U.a,vector,Ua,t n idx,m s-1,velocity_of_soil
+U.b,vector,Ub,t n idx,m s-1,velocity_of_fluid
+wallShearStress,vector,wallShearStress,t n idx,kg m-1 s-2,wall_shear_stress
