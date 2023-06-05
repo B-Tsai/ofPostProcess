@@ -114,8 +114,6 @@ for of_name in of_name_list: # Loop over all assigned OpenFOAM variables
         dim_str = ''
         for dim in dim_list:
             dim_str += ("'" + dim + "',")
-        print(dim_str)
-        print(dim_str[0:-1])
         time = ncfile.createVariable('time', np.float64, ('t',))
         time.units = 's'
         time.long_name = 'time'
