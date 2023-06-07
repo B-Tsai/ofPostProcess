@@ -9,7 +9,7 @@ import numpy as np
 #******************************************************************************
 #VARIABLES
 # Inputs
-case_name = 'AT03_test09_134k'
+case_name = 'AL01_test09_9M'
 
 # Directories
 case_path = os.path.join('..', case_name)

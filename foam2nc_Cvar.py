@@ -63,7 +63,7 @@ def readOf(case_path, t, of_name):
 #******************************************************************************
 #VARIABLES
 # Inputs
-case_name     = 'AT03_test09_134k'
+case_name     = 'AL01_test09_9M'
 of_name_list  = ['alpha.a']
 
 # Directories
