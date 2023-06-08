@@ -1,6 +1,5 @@
 #******************************************************************************
 #MODULES
-import fluidfoam
 import math
 import os
 import netCDF4 as nc
@@ -37,8 +36,8 @@ dy        = dx
 dz        = dx
 alpha_min = 0.57
 D         = 0.04
-xi        = (D/2 + dx)*np.cos(np.linspace(0,2*math.pi,17))
-yi        = (D/2 + dx)*np.sin(np.linspace(0,2*math.pi,17))
+xi        = (D/2 + dx)*np.cos(np.arange(0,2*math.pi-math.pi/8,2*math.pi/8))
+yi        = (D/2 + dx)*np.sin(np.arange(0,2*math.pi-math.pi/8,2*math.pi/8))
 zi        = np.arange(-D/2, D/2, dz)
 ngrid     = 3
 
@@ -91,9 +90,9 @@ for it in t_new:
         print('[' + prog_perc + '%] Processing Z at t = ' + str(it) + ' sec')
         ncfile.variables['time'][count] = it
         v = alphaa[count,:]
-        Zj = np.empty(len(xi)-1)
+        Zj = np.empty(len(xi))
         Zj[:] = np.NaN
-        for j in np.arange(len(xi)-1):
+        for j in np.arange(len(xi)):
             idx = interpIdx(x, y, z, xi[j], yi[j], zi, dx, dy, dz, ngrid)
             xv, yv, zv, vv = extractInterp(x, y, z, v, idx)
             xp = xi[j]*np.ones(zi.shape)
@@ -102,8 +101,10 @@ for it in t_new:
             xyzp = np.vstack((xp.flatten(), yp.flatten(), zp.flatten())).T
             interp3 = LinearNDInterpolator((xv, yv, zv), vv)
             vp = interp3(xyzp)
-            idx_z = np.argmin(np.abs(vp-alpha_min))
-            Zj[j] = zp[idx_z]
+            idx_z = np.argmin(np.abs(vp-alpha_min))            
+            interp1 = interp1d(vp[idx_z-1:idx_z+2], zp[idx_z-1:idx_z+2])
+            Zj_tmp = interp1(alpha_min)
+            Zj[j] = Zj_tmp
         ncfile.variables['Z'][count,:] = Zj
     else:
         print('[' + prog_perc + '%] Z at t = ' + str(it) + ' sec exists, skip')
