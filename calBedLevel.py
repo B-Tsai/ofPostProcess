@@ -70,7 +70,7 @@ if not os.path.exists(ncfile_path):
     print('    ' + ncfile_path + ' does not exist, creating... ')
     ncfile = nc.Dataset(ncfile_path, mode='w', format='NETCDF4')
     t_dim = ncfile.createDimension('t', None)
-    n_dim = ncfile.createDimension('n', len(xi)-1)
+    n_dim = ncfile.createDimension('n', len(xi))
     time = ncfile.createVariable('time', np.float64, ('t',))
     time.units = 's'
     time.long_name = 'time'
