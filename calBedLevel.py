@@ -101,10 +101,15 @@ for it in t_new:
             xyzp = np.vstack((xp.flatten(), yp.flatten(), zp.flatten())).T
             interp3 = LinearNDInterpolator((xv, yv, zv), vv)
             vp = interp3(xyzp)
-            idx_z = np.sum(vp >= alpha_min)
-            interp1 = interp1d(vp[idx_z-1:idx_z+1], zp[idx_z-1:idx_z+1])
-            Zj_tmp = interp1(alpha_min)
-            Zj[j] = Zj_tmp
+            zp_tmp = zp[~np.isnan(vp)]
+            vp_tmp = vp[~np.isnan(vp)]
+            idx_z = np.sum(vp_tmp>= alpha_min)
+            if idx_z == 0:
+                Zj[j] = np.nan
+            else:
+                interp1 = interp1d(vp_tmp[idx_z-1:idx_z+1], zp_tmp[idx_z-1:idx_z+1])
+                Zj_tmp = interp1(alpha_min)
+                Zj[j] = Zj_tmp
         ncfile.variables['Z'][count,:] = Zj
     else:
         print('[' + prog_perc + '%] Z at t = ' + str(it) + ' sec exists, skip')
