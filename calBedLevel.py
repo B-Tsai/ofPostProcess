@@ -38,7 +38,7 @@ alpha_min = 0.57
 D         = 0.04
 xi        = (D/2 + dx)*np.cos(np.arange(0,2*math.pi-math.pi/8,2*math.pi/8))
 yi        = (D/2 + dx)*np.sin(np.arange(0,2*math.pi-math.pi/8,2*math.pi/8))
-zi        = np.arange(-D/2, D/2, dz)
+zi        = np.arange(-D, D, dz)
 ngrid     = 3
 
 # Directories
