@@ -116,6 +116,7 @@ for it in t_new:
         print('[' + prog_perc + '%] Z at t = ' + str(it) + ' sec exists, skip')
     count += 1
 print('[100.00%] Done with writing Z.nc for ' + case_name)
+print('')
 
 # Close netCDF file
 C.close()

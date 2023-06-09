@@ -144,3 +144,4 @@ for of_name in of_name_list: # Loop over all assigned OpenFOAM variables
     
 print('')
 print('[100.00%] Done with writing ncfiles for ' + case_name)
+print('')
