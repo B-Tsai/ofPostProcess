@@ -103,7 +103,8 @@ for it in t_new:
             vp = interp3(xyzp)
             zp_tmp = zp[~np.isnan(vp)]
             vp_tmp = vp[~np.isnan(vp)]
-            idx_z = np.sum(vp_tmp>= alpha_min)
+            idx_z_all = np.where(vp_tmp < alpha_min)
+            idx_z = idx_z_all[0][0]
             if idx_z == 0:
                 Zj[j] = np.nan
             else:
