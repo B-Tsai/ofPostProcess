@@ -40,7 +40,7 @@ Z = Z_nc.variables['Z'][:]
 # Plot
 fig = plt.figure(figsize=(20,5))
 ax = fig.add_subplot(1,1,1)
-cmap = plt.get_cmap('hsv', Z.shape[1])
+cmap = plt.get_cmap('hsv', Z.shape[1]+1)
 for i in np.arange(Z.shape[1]):
     plt.plot(t, (Z[0,i]-Z[:,i])/D, linestyle='dashed', linewidth=1.0, color=cmap(i))
 t_exp = np.arange(0.0, 3*T, 0.05)
@@ -49,7 +49,7 @@ plt.plot(t_exp, SD*np.ones(t_exp.shape), linestyle='dashed', linewidth=1.5, colo
 plt.plot(t, (np.nanmean(Z[0,:])-np.nanmean(Z, axis=1))/D, linestyle='solid', linewidth=1.5, color='black')
 ax.set_xlabel('$\it{t}$ [sec]',fontsize=24)
 ax.set_ylabel('$\it{S}$/$\it{D}$',fontsize=24)
-ax.axis([0, 200, 0, 0.4])
+ax.axis([0, 200, 0, 0.5])
 
 # Save
 case_no = case_name.split('_')[0]

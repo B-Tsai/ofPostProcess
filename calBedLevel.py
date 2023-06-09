@@ -101,7 +101,7 @@ for it in t_new:
             xyzp = np.vstack((xp.flatten(), yp.flatten(), zp.flatten())).T
             interp3 = LinearNDInterpolator((xv, yv, zv), vv)
             vp = interp3(xyzp)
-            idx_z = np.argmin(np.abs(vp-alpha_min))            
+            idx_z = np.nanargmin(np.abs(vp-alpha_min))            
             interp1 = interp1d(vp[idx_z-1:idx_z+2], zp[idx_z-1:idx_z+2])
             Zj_tmp = interp1(alpha_min)
             Zj[j] = Zj_tmp
