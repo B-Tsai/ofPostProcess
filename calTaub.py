@@ -103,7 +103,6 @@ for it in t_new:
         xyp = np.vstack((xp.flatten(), yp.flatten())).T
         interp = LinearNDInterpolator((xv, yv), vv)
         vp = interp(xyp)
-        print(vp)
         ncfile.variables['taubx'][count,:] = -rhof*vp
     else:
         print('[' + prog_perc + '%] taubx at t = ' + str(it) + ' sec exists, skip')
